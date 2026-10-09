@@ -1,0 +1,26 @@
+name: Pruebas Automáticas con Node.js
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  testear-codigo-node:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar Código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: Instalar las dependencias
+        run: npm install
+
+      - name: Ejecutar Pruebas
+        run: npm test
